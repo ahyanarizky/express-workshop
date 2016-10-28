@@ -1,0 +1,23 @@
+{
+  "name": "express-workshop",
+  "version": "1.0.0",
+  "description": "Express workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahyanarizky/express-workshop.git"
+  },
+  "keywords": [
+    "express",
+    "workshop"
+  ],
+  "author": "ahyanarizky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahyanarizky/express-workshop/issues"
+  },
+  "homepage": "https://github.com/ahyanarizky/express-workshop#readme"
+}
