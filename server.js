@@ -39,8 +39,8 @@ router.get('/books', (req, res) => {
 router.get('/books/:id', (req, res) => {
 
     let book = books.filter(book => {
-        return book.id === req.params.id
-    })
+        return book.id === Number(req.params.id)
+    })[0]
     res.json(book)
 })
 
