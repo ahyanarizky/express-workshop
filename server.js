@@ -25,7 +25,7 @@ const books = require('./data.js');
 //----------------------------------------
 
 router.get('/ping', (req, res) => {
-    res.send('PONG !')
+    res.json({"message": 'PONG !'})
 })
 
 router.get('/books', (req, res) => {
