@@ -40,6 +40,10 @@ app.use('/', router)
 const hostname = process.env.HOST || "localhost"
 const port = process.env.PORT || "3000"
 
-app.listen(port, hostname, () => {
-    console.log(`Server is running on ${hostname}:${port}`);
+app.listen(port, hostname, (err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(`Server is running on ${hostname}:${port}`);
+    }
 })
