@@ -71,6 +71,21 @@ router.delete('/books/:id', (req, res) => {
     }
 })
 
+router.put('/books/:id', (req, res) => {
+    let book = books.filter(book => {
+        return book.id === Number(req.params.id)
+    })[0]
+    if (!book) {
+        res.status(404).json({message: "No book found"})
+    } else {
+        Object.keys(req.body).forEach(key => {
+            book[key] = req.body.key
+        })
+        books[index] = book
+        res.json(books)
+    }
+})
+
 // ---------------------------------------
 // ROUTING
 //----------------------------------------
