@@ -24,6 +24,10 @@ const books = require('./data.js');
 // ROUTE CONFIGURATION
 //----------------------------------------
 
+// req.body  >>> /data + { id: 0 }
+// req.params >>> /data/:id
+// req. query >>> /data?q={id}
+
 router.get('/ping', (req, res) => {
     res.json({"message": 'PONG !'})
 })
@@ -33,10 +37,6 @@ router.get('/books', (req, res) => {
 })
 
 router.get('/books/:id', (req, res) => {
-
-    // req.body  >>> /data + { id: 0 }
-    // req.params >>> /data/:id
-    // req. query >>> /data?q={id}
 
     let book = books.filter(book => {
         return book.id === req.params.id
