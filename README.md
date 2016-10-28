@@ -15,3 +15,5 @@ npm start
 ```sh
 MIT
 ```
+### Copyright
+2016 ahyanarizky
