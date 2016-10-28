@@ -41,7 +41,10 @@ router.get('/books/:id', (req, res) => {
     let book = books.filter(book => {
         return book.id === Number(req.params.id)
     })[0]
-    res.json(book)
+    if (!book) {
+        res.status(404).json({message: "No book found"})
+    } else {}
+    res.status(200).json(book)
 })
 
 router.post('/books', (req, res) => {
@@ -53,6 +56,8 @@ router.post('/books', (req, res) => {
     books.push(book)
     res.json(books)
 })
+
+// router.delete('/books/:id', (req.res) => {})
 
 // ---------------------------------------
 // ROUTING
