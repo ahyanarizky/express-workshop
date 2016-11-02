@@ -1,17 +1,9 @@
-const data = [
-    {
-        "id": 1,
-        "name": "Express",
-        "price": 10
-    }, {
-        "id": 2,
-        "name": "Learn mongo",
-        "price": 20
-    }, {
-        "id": 3,
-        "name": "Learn heroku",
-        "price": 25
-    }
-]
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
-module.exports = data
+const BookSchema = new Schema({
+    isbn: String,
+    name: String,
+    price: Number
+}, {timestamp: true})
+module.exports = mongoose.model('Book', BookSchema)
