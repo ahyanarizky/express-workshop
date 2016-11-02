@@ -1,15 +1,23 @@
 'use strict'
 
+//CONFIGURATION
+require('dotenv').config()
 //express dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+//database
+const mongoose = require('mongoose')
 //initiate express
 const app = express()
 const router = express.Router()
 const routeBooks = require('./routes/books')
 
+//MONGODB
+
+mongoose.Promise = global.Promise
+mongoose.connect(process.env.MONGODB_URI)
 // ---------------------------------------
 // APP CONFIGURATION
 //----------------------------------------
