@@ -1,12 +1,15 @@
 const books = require('../data/data.js');
 
 module.exports = {
+    // GET api/ping
     pingpong: (req, res) => {
         res.json({"message": 'PONG !'})
     },
+    // GET api/books
     getBooks: (req, res) => {
         res.json(books)
     },
+    // GET api/books/id
     getBookById: (req, res) => {
 
         let book = books.filter(book => {
@@ -18,6 +21,7 @@ module.exports = {
             res.status(200).json(book)
         }
     },
+    // POST api/books
     postBook: (req, res) => {
         const book = {
             id: Number(req.body.id),
@@ -27,6 +31,7 @@ module.exports = {
         books.push(book)
         res.json(books)
     },
+    // DELETE api/books/:id
     deleteBook: (req, res) => {
 
         let book = books.filter(book => {
@@ -39,6 +44,7 @@ module.exports = {
             res.status(200).json({message: `Books ${req.params.id} has been deleted`})
         }
     },
+    // PUT api/books/:id
     putBook: (req, res) => {
         let book = books.filter(book => {
             return book.id === Number(req.params.id)
