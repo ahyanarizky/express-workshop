@@ -1,5 +1,7 @@
 const books = require('../data/data.js');
 
+const Book = require('../models/books');
+
 module.exports = {
     // GET api/ping
     pingpong: (req, res) => {
@@ -7,29 +9,48 @@ module.exports = {
     },
     // GET api/books
     getBooks: (req, res) => {
-        res.json(books)
+        // res.json(books)
+        Book.find({}, (err, data) => {
+            if (err) {
+                res.json(err)
+            } else {
+                res.json(data)
+            }
+        })
     },
     // GET api/books/id
     getBookById: (req, res) => {
 
-        let book = books.filter(book => {
-            return book.id === Number(req.params.id)
-        })[0]
-        if (!book) {
-            res.status(404).json({message: "No book found"})
-        } else {
-            res.status(200).json(book)
-        }
+        // let book = books.filter(book => {
+        //     return book.id === Number(req.params.id)
+        // })[0]
+        // if (!book) {
+        //     res.status(404).json({message: "No book found"})
+        // } else {
+        //     res.status(200).json(book)
+        // }
     },
     // POST api/books
     postBook: (req, res) => {
-        const book = {
-            id: Number(req.body.id),
+        // const book = {
+        //     id: Number(req.body.id),
+        //     name: req.body.name,
+        //     price: Number(req.body.price)
+        // }
+        // books.push(book)
+        // res.json(books)
+        Book.create({
+            isbn: req.body.isbn,
             name: req.body.name,
             price: Number(req.body.price)
-        }
-        books.push(book)
-        res.json(books)
+        }, (err, data) => {
+            if (err) {
+                res.json(err)
+            } else {
+                res.json(data)
+            }
+        })
+
     },
     // DELETE api/books/:id
     deleteBook: (req, res) => {
