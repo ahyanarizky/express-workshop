@@ -44,14 +44,16 @@ module.exports = {
 
     getBookById: (req, res) => {
 
-        let book = books.filter(book => {
-            return book.id === Number(req.params.id)
-        })[0]
-        if (!book) {
-            res.status(404).json({message: "No book found"})
-        } else {
-            res.status(200).json(book)
-        }
+        Book.findOne({
+            _id: req.params.id
+        }, (err, data) => {
+            if (err) {
+                res.json(err)
+            } else {
+                res.json(data)
+            }
+        })
+
     },
     // POST api/books
     /**
