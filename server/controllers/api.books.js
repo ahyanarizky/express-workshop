@@ -43,13 +43,6 @@ module.exports = {
     },
     // POST api/books
     postBook: (req, res) => {
-        // const book = {
-        //     id: Number(req.body.id),
-        //     name: req.body.name,
-        //     price: Number(req.body.price)
-        // }
-        // books.push(book)
-        // res.json(books)
         Book.create({
             isbn: req.body.isbn,
             name: req.body.name,
@@ -65,21 +58,13 @@ module.exports = {
     },
     // DELETE api/books/:id
     deleteBook: (req, res) => {
-
-        // let book = books.filter(book => {
-        //     return book.id === Number(req.params.id)
-        // })[0]
-        // if (!book) {
-        //     res.status(404).json({message: "No book found"})
-        // } else {
-        //     books.splice(books.indexOf(book), 1)
-        //     res.status(200).json({message: `Books ${req.params.id} has been deleted`})
-        // }
         Book.remove({
             _id: req.params.id
         }, (err, data) => {
             if (err) {
                 res.json({message: `Error: ${err}`})
+            } else if (!data) {
+                res.json({message: 'ID not found'})
             } else {
                 res.json({message: 'Data deleted'})
             }
@@ -87,20 +72,15 @@ module.exports = {
     },
     // PUT api/books/:id
     putBook: (req, res) => {
-        // let book = books.filter(book => {
-        //     return book.id === Number(req.params.id)
-        // })[0]
-        // if (!book) {
-        //     res.status(404).json({message: "No book found"})
-        // } else {
-        //     Object.keys(req.body).forEach(key => {
-        //         book[key] = req.body.key
-        //     })
-        //     books[index] = book
-        //     res.json(books)
-        // }
         Book.findOneAndUpdate({
             _id: req.params.id
+        }, {
+            isbn: req.body.isbn,
+            name: req.body.name,
+            price: req.body.price
+        }, {
+            new: true,
+            upsert: true
         }, (err, data) => {
             if (err) {
                 res.json({message: `Error: ${err}`})
