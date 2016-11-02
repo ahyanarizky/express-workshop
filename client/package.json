@@ -1,0 +1,12 @@
+{
+  "name": "Express workshop",
+  "version": "1.0.0",
+  "description": "express-workshop with mhaidarhanif",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/ahyanarizky/express-workshop",
+    "type": "git"
+  },
+  "author": "ahyanarizky",
+  "license": "MIT"
+}
