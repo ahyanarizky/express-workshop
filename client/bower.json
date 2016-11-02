@@ -1,0 +1,24 @@
+{
+  "name": "express-client",
+  "description": "express-client",
+  "main": "index.js",
+  "authors": [
+    "Ahyana Rizky Pratama <ahyana.rizky@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "express-workshop-client"
+  ],
+  "homepage": "https://github.com/ahyanarizky/express-workshop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "semantic": "^2.2.6"
+  }
+}
