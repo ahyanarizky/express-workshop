@@ -66,29 +66,47 @@ module.exports = {
     // DELETE api/books/:id
     deleteBook: (req, res) => {
 
-        let book = books.filter(book => {
-            return book.id === Number(req.params.id)
-        })[0]
-        if (!book) {
-            res.status(404).json({message: "No book found"})
-        } else {
-            books.splice(books.indexOf(book), 1)
-            res.status(200).json({message: `Books ${req.params.id} has been deleted`})
-        }
+        // let book = books.filter(book => {
+        //     return book.id === Number(req.params.id)
+        // })[0]
+        // if (!book) {
+        //     res.status(404).json({message: "No book found"})
+        // } else {
+        //     books.splice(books.indexOf(book), 1)
+        //     res.status(200).json({message: `Books ${req.params.id} has been deleted`})
+        // }
+        Book.remove({
+            _id: req.params.id
+        }, (err, data) => {
+            if (err) {
+                res.json({message: `Error: ${err}`})
+            } else {
+                res.json({message: 'Data deleted'})
+            }
+        })
     },
     // PUT api/books/:id
     putBook: (req, res) => {
-        let book = books.filter(book => {
-            return book.id === Number(req.params.id)
-        })[0]
-        if (!book) {
-            res.status(404).json({message: "No book found"})
-        } else {
-            Object.keys(req.body).forEach(key => {
-                book[key] = req.body.key
-            })
-            books[index] = book
-            res.json(books)
-        }
+        // let book = books.filter(book => {
+        //     return book.id === Number(req.params.id)
+        // })[0]
+        // if (!book) {
+        //     res.status(404).json({message: "No book found"})
+        // } else {
+        //     Object.keys(req.body).forEach(key => {
+        //         book[key] = req.body.key
+        //     })
+        //     books[index] = book
+        //     res.json(books)
+        // }
+        Book.findOneAndUpdate({
+            _id: req.params.id
+        }, (err, data) => {
+            if (err) {
+                res.json({message: `Error: ${err}`})
+            } else {
+                res.json(data)
+            }
+        })
     }
 }
